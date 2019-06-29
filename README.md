@@ -1,7 +1,9 @@
 # Articles-mobx
 
 Установка: 
+***
 git clone
+***
 npm install
 npm start
 
