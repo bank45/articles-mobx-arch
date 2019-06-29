@@ -21,7 +21,7 @@ Babel     |7.4.5
 Webpack   |4.29.6
 API       |newsapi.org
 
-### Установка: 
+### Installation
 
 * git clone
 
