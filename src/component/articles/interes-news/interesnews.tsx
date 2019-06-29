@@ -1,49 +1,45 @@
 import React, { Component } from 'react';
-import {  observer } from 'mobx-react'
-import { observable } from 'mobx'
+import { observer, inject } from 'mobx-react'
+import { observable, decorate } from 'mobx'
+import { ArticleStore } from '../../../stores/articleStore'
+import ServiceAPI from '../../../service'
+import { async } from 'q';
 
+interface ArticleProps {
+    articleStore?: ArticleStore
+}
+
+@inject('articleStore')
 @observer
-class InteresNews extends Component {
-    @observable articles: any;
-    constructor(props) {
-        super(props);
-        this.articles = [];
-    }
+class InteresNews extends Component<ArticleProps> {
+    // @observable interes = [];
+    // serviceAPI = new ServiceAPI();
+    componentWillMount() {
+        this.props.articleStore!.setInteres()
 
-    componentDidMount() {
-        this.resNew()
-            .then((body) => {
-                this.articles = body
-            })
-    }
-    async resNew() {
-        const res = await fetch('/api/articles/interesting')
-        if (!res.ok) {
-            throw new Error(`URL not fetch received ${res.status}`);
-        }
-        return res.json()
-    }
-
-    interes = () => {
-        return (<ul>
-            {
-                this.articles.slice(3, 8).map(n => (
-                    <li key={n.url}>{n.title} </li>
-                ))
-            }
-        </ul>);
     }
 
     render() {
+        const { interes } = this.props.articleStore!
+        console.log(interes)
         return (
             <div>
                 <div className="sectionHed">
-                    <h3 >Самое интересное</h3>
-                    {this.interes()}
+                    <h3 >Самые интересные</h3>
+                    <ul>
+                        {
+                            interes.slice(3, 8).map((n) => {
+                                return (
+                                    <li key={n.url}>{n.title}</li>
+                                )
+                            })
+                        }
+                    </ul>
                 </div>
             </div>
         )
     }
 }
+
 
 export default InteresNews;

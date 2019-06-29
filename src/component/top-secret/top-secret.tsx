@@ -36,10 +36,10 @@ const readCookie = (name) => {
     c = document.cookie.split(';')
     for (i = 0; i < c.length; i++) {
         j = c[i]
-        while (j.charAt(0) == ' ') {
+        while (j.charAt(0) === ' ') {
             j = j.substring(1, j.length)
         }
-        if (j.indexOf(l) == 0) {
+        if (j.indexOf(l) === 0) {
             return j.substring(l.length, j.length)
         }
     }

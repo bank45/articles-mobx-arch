@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { observable } from 'mobx'
 import { PAGES } from '../../routes/pages';
 import { Route, Switch, Link } from 'react-router-dom'
 import Header from '../header'
@@ -11,17 +10,9 @@ import Login from '../login'
 import Page404 from '../page404'
 import './app.css';
 
-
-
 @inject('routing')
 @observer
 class App extends Component {
-    @observable onLogin: any;
-    constructor(props) {
-        super(props);
-        this.onLogin = false
-    }
-
     renderMenu() {
         return (
             <div className="navBar">
@@ -34,25 +25,19 @@ class App extends Component {
         );
     }
     render() {
-        const { onLogin } = this;
-        const WrappedLogin = (props) => {
-            return (<Login{...props} onLogin={onLogin} handlerLogin={() => { this.onLogin = true }} />)
-        }
-        const WrappedSecret = (props) => {
-            return (<Secret{...props} onLogin={onLogin} />)
-        }
-
         return <div>
             <Header />
             {this.renderMenu()}
+            <main>
+                {this.props.children}
+            </main>
             <Switch>
                 <Route path="/" component={Home} exact />
                 <Route path="/articles" component={Articles} exact />
-                <Route path="/top-secret" component={WrappedSecret} />
-                <Route path="/login" render={WrappedLogin} />
+                <Route path="/top-secret" component={Secret} />
+                <Route path="/login" component={Login} />
                 <Route path="/" component={Page404} />
             </Switch>
-
         </div>
     }
 }

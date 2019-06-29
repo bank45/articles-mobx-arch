@@ -3,10 +3,9 @@ div.header{
     height: 50px;
    max-width: 950px;
     position: relative;
-    background-color: bisque
+    background-color: rgb(108, 190, 0)
 }
-.header h3{
-    height: 50px;
-    margin: auto;
-    background-color: rgb(210, 255, 127);
+.header>a{
+    text-align: center;
+    text-decoration: none;
 }

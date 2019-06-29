@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import './login.css'
+import { observer, inject } from 'mobx-react'
+import { IloginStore } from '../../stores/loginStore'
 
-interface IRecProps {
-    onLogin: boolean;
-    handlerLogin: any
+interface LoginProps {
+    loginStore?: IloginStore,
 }
 
-class Login extends Component<IRecProps> {
-
+@inject('loginStore')
+@observer
+class Login extends Component<LoginProps> {
     checkLogin = async (e) => {
         e.preventDefault()
         const formData = new FormData(e.target)
@@ -16,29 +18,37 @@ class Login extends Component<IRecProps> {
         formData.forEach(async function (value, key) {
             form[key] = value
         })
-        console.log("access:", form['login'], form['pass'],form, "props:", this.props.onLogin)
-        if (form['login'] == 'Dog' && form['pass'] == '777') {
-            this.props.handlerLogin();
+        if (form['username'] === 'Dog' && form['password'] === '777') {
             const date: any = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
             document.cookie = "sessionId=" + "werer234890834" + ";path=/;expires=" + date;
+            this.clickAccess();
+        } else {
+            this.clickDenied();
         }
     }
 
-    render() {
+    private clickDenied = async () => {
+        const { setDenied } = this.props.loginStore!;
+        await setDenied();
+    }
 
-        if (this.props.onLogin) { return <Redirect to={'/top-secret'} /> }
-        console.log("render", this.props)
-        const denied = (!this.props.onLogin) ? <p>Неверно введены имя пользователя или пароль</p> : null;
+    private clickAccess = async () => {
+        const { onAccess } = this.props.loginStore!;
+        await onAccess();
+    }
+    render() {
+        const { onLogin, denied } = this.props.loginStore!;
+        if (onLogin) { return <Redirect to={'/top-secret'} /> }
         return (
             <div className="divForm">
                 <div className="inLogin">
                     <form onSubmit={this.checkLogin} action="">
                         Авторизация<br />
-                        <input name='login'
+                        <input name='username'
                             type="text"
                             placeholder="Login"
                         /><br />
-                        <input name='pass'
+                        <input name='password'
                             type="password"
                             placeholder="password"
                         /><br />

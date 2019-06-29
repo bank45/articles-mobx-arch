@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 
+
 @observer
 class NewNews extends Component {
     @observable articles: any;
@@ -39,7 +40,7 @@ class NewNews extends Component {
         return (
             <div>
                 <div className="sectionHed">
-                    <h3 >Самое новое</h3>
+                    <h3 >Самые новые</h3>
                     {this.articleNew()}
                 </div>
             </div>
