@@ -50,18 +50,13 @@ button {
     cursor: pointer;
 }
 .btn {
-    /* по-умолчанию для <button>, но пригодится для <a> */
     display: inline-block;
     text-align: center;
     text-decoration: none;
- /* создаём маленькие отступы, если кнопки перенесутся на две строки */
     margin: 2px 1px;
- /* невидимая граница (понадобится для цвета при наведении/фокусе) */
     border: solid 1px transparent;
     border-radius: 5px;
- /* размер строится из текста и отступов (без width/height) */
     padding: 0.5em 1em;
- /* убедитесь, что достаточно контраста! */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: large;
     color: aliceblue;
@@ -77,7 +72,7 @@ button {
     border-color: currentColor;
     background-color: white;
  } 
-/* инвертируем цвета при наведении и фокусе */
+ 
 .btn:hover,
 .btn:focus {
    color: #2500f8;
