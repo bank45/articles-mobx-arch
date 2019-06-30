@@ -3,10 +3,11 @@ div.header{
     height: 50px;
    max-width: 950px;
     position: relative;
-    background-color: rgb(108, 190, 0)
+    background-color: rgb(98, 0, 190)
 }
 .header>a{
     text-align: center;
     text-decoration: none;
     font-size: larger;
+    color: aliceblue;
 }

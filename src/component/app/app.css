@@ -34,17 +34,61 @@ ul.menu{
     margin: 1;
     list-style-type: none;
 }
-.menuDiv a{
-    text-decoration: none;
-}
 
-.menuDiv a, 
-.menuDiv a.current, .menuDiv a:hover{color: #0011ff;}
-.menuDiv a:hover {
-color: rgb(141, 20, 255);
-}
 .navBar{
     max-width: 950px;
     margin: auto;
     background-color: rgb(195, 208, 250);
 }
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+.btn {
+    /* по-умолчанию для <button>, но пригодится для <a> */
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+ /* создаём маленькие отступы, если кнопки перенесутся на две строки */
+    margin: 2px 1px;
+ /* невидимая граница (понадобится для цвета при наведении/фокусе) */
+    border: solid 1px transparent;
+    border-radius: 5px;
+ /* размер строится из текста и отступов (без width/height) */
+    padding: 0.5em 1em;
+ /* убедитесь, что достаточно контраста! */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: large;
+    color: aliceblue;
+    background-color: #002397;
+ }
+.btn:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+}
+
+.btn:hover {
+    color: #9050AA;
+    border-color: currentColor;
+    background-color: white;
+ } 
+/* инвертируем цвета при наведении и фокусе */
+.btn:hover,
+.btn:focus {
+   color: #2500f8;
+   border-color: currentColor;
+   background-color: rgb(255, 147, 7);
+}
+
+.btn {
+    outline: none;
+ }
+
+ .btn::-moz-focus-inner {
+    border: none;
+ }

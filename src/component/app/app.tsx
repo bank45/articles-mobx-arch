@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import { PAGES } from '../../routes/pages';
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Header from '../header'
 import Home from '../home';
 import Articles from '../articles'
@@ -10,16 +9,21 @@ import Login from '../login'
 import Page404 from '../page404'
 import './app.css';
 
+interface Props {
+    routing?: any;
+}
+
 @inject('routing')
 @observer
-class App extends Component {
+class App extends Component<Props> {
     renderMenu() {
+        const { push } = this.props.routing;
         return (
             <div className="navBar">
                 <ul className='menu'>
-                    <li className='menuDiv'><Link to={PAGES.home.path}>Главная</Link></li>
-                    <li className='menuDiv'><Link to={PAGES.articles.path}>Статьи</Link></li>
-                    <li className='menuDiv'><Link to={PAGES.top_secret.path}>Совершенно секретно</Link></li>
+                    <li className='btn'><button onClick={() => push('/')}>Главная</button></li>
+                    <li className='btn'><button onClick={() => push('/articles')}>Статьи</button></li>
+                    <li className='btn'><button onClick={() => push('/top-secret')}>Совершенно секретно</button></li>
                 </ul>
             </div>
         );
