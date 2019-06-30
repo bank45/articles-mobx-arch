@@ -1,47 +1,34 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react'
-import { observable } from 'mobx'
+import { observer,inject } from 'mobx-react'
+import { ArticleStore } from '../../../stores/articleStore'
 
+interface ArticleProps {
+    articleStore?: ArticleStore
+}
 
+@inject('articleStore')
 @observer
-class NewNews extends Component {
-    @observable articles: any;
-    constructor(props) {
-        super(props);
-        this.articles = [];
-    }
-    componentDidMount() {
-        this.resNew()
-            .then((body) => {
-                this.articles = body
-            })
-    }
-    async resNew() {
-        const res = await fetch('/api/articles/new')
-        if (!res.ok) {
-            throw new Error(`URL not fetch received ${res.status}`);
-        }
-        return res.json()
-    }
+class NewNews extends Component<ArticleProps> {
 
-    articleNew = () => {
-        return (<ul>
-            {
-                this.articles.slice(0, 5).map(n => (
-                    <li key={n.url}>
-                        {n.title}
-                    </li>
-                ))
-            }
-        </ul>);
+    componentWillMount() {
+        this.props.articleStore!.setNewNews()
     }
 
     render() {
+        const { newnews } = this.props.articleStore!
         return (
             <div>
                 <div className="sectionHed">
                     <h3 >Самые новые</h3>
-                    {this.articleNew()}
+                    <ul>
+                        {
+                            newnews.slice(0, 5).map((n) => {
+                                return (
+                                    <li key={n.url}>{n.title}</li>
+                                )
+                            })
+                        }
+                    </ul>
                 </div>
             </div>
         )

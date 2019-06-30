@@ -8,4 +8,5 @@ div.header{
 .header>a{
     text-align: center;
     text-decoration: none;
+    font-size: larger;
 }

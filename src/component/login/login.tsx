@@ -19,8 +19,9 @@ class Login extends Component<LoginProps> {
             form[key] = value
         })
         if (form['username'] === 'Dog' && form['password'] === '777') {
-            const date: any = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
-            document.cookie = "sessionId=" + "werer234890834" + ";path=/;expires=" + date;
+            const date: any = new Date()
+            console.log(date)
+            document.cookie = `sessionId=werer234890834; path=/; expires=${date}`;
             this.clickAccess();
         } else {
             this.clickDenied();

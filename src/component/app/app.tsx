@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { inject, observer } from 'mobx-react'
+import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import { PAGES } from '../../routes/pages';
 import { Route, Switch, Link } from 'react-router-dom'
 import Header from '../header'

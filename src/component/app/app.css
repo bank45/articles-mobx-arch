@@ -6,7 +6,10 @@ body, html {
     font-size: 16px;
     line-height: 1.42;
     -webkit-font-smoothing: antialiased;
-    background: #fffcf7; }
+    background: #fffcf7; 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+    
 ul.menu{
     margin: 0;
 }

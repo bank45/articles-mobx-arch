@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 class ServiceAPI {
     async  getResource(url) {
         const res = await fetch(url)

@@ -1,5 +1,7 @@
 .divForm{
     padding: 50px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
 }
 .inLogin {
     width: 200px; 

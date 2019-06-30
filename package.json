@@ -2,7 +2,7 @@
   "name": "top-mobx",
   "version": "1.0.0",
   "description": "",
-  "main": "index.tsx",
+  "main": "src/index.tsx",
   "scripts": {
     "start": "react-scripts start & json-server --watch db.json --port 5000",
     "test": "echo \"Error: no test specified\" && exit 1"
