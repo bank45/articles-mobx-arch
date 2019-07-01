@@ -24,7 +24,7 @@ class InteresNews extends Component<ArticleProps> {
                         {
                             interes.slice(3, 8).map((n) => {
                                 return (
-                                    <li key={n.url}>{n.title}</li>
+                                    <li key={n.url}><a href={n.url}>{n.title}</a></li>
                                 )
                             })
                         }

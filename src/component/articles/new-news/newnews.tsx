@@ -24,7 +24,7 @@ class NewNews extends Component<ArticleProps> {
                         {
                             newnews.slice(0, 5).map((n) => {
                                 return (
-                                    <li key={n.url}>{n.title}</li>
+                                    <li key={n.url}><a href={n.url}>{n.title}</a></li>
                                 )
                             })
                         }
