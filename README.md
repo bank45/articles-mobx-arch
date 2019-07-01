@@ -17,8 +17,8 @@
 TypeScript|3.5.2
 React     |16.8.6
 Mobx      |5.10.1
-Babel     |7.4.5
-Webpack   |4.29.6
+Babel     |в версии: articles-mobx-webpack
+Webpack   |в версии: articles-mobx-webpack
 API       |newsapi.org
 
 ## Installation
